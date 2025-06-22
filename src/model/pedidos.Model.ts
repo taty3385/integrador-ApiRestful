@@ -33,6 +33,9 @@ const modelOrder={
   return pedidos;
 },
 
+editOrder:(id:number, updateOrder:{nombre:string, descripcion:string})=>{
+const pedidos= mopdel
 
+}
 }
 export default modelOrder;
