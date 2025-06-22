@@ -6,6 +6,16 @@
   },
   {
     "id": 1750613060394,
+    "nombre": "Empanada vegana",
+    "descripcion": "Soja texturizada y verduras"
+  },
+  {
+    "id": 1750614392313,
+    "nombre": "Empanada",
+    "descripcion": "Carne picante"
+  },
+  {
+    "id": 1750614427314,
     "nombre": "Empanada",
     "descripcion": "Carne picante"
   }

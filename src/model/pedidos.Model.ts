@@ -34,8 +34,28 @@ const modelOrder={
 },
 
 editOrder:(id:number, updateOrder:{nombre:string, descripcion:string})=>{
-const pedidos= mopdel
+const orders= modelOrder.readOrder()
+const searchOeders= orders.find((pedido:any)=>pedido.id=== id)
+if (!searchOeders){
+    return false
+}
+ searchOeders.nombre=updateOrder.nombre
+ searchOeders.descripcion=updateOrder.descripcion
+ modelOrder.writeOrder(orders)
+ return true
+},
+searchOrder:(id: number)=>{
+    const orders= modelOrder.readOrder()
+    const findOrder=orders.find((order:any)=>order.id===id)
+   if (!findOrder){
+       return false
+    }
+    return orders
 
 }
+
+// eliminar y testear la busqueda  si anda bien 
+
 }
+
 export default modelOrder;
