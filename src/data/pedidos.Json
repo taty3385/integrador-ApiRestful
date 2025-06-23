@@ -6,12 +6,17 @@
   },
   {
     "id": 1750614392313,
-    "nombre": "Empanada",
-    "descripcion": "Carne picante"
+    "nombre": "ensaladas",
+    "descripcion": "lechuga ,cebolla , tomate ,MORRON"
   },
   {
     "id": 1750614427314,
     "nombre": "Empanada",
     "descripcion": "Carne picante"
+  },
+  {
+    "id": 1750701988213,
+    "nombre": "nuggets",
+    "descripcion": "polloS"
   }
 ]

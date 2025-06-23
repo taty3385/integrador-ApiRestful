@@ -4,6 +4,7 @@ import path from "path";
 const filePath = path.join(__dirname, "../data/pedidos.json");
 
 const modelOrder = {
+  // leer archivo
   readOrder: () => {
     const contenido = fs.readFileSync(filePath, "utf8");
     if (!contenido) {
@@ -14,12 +15,12 @@ const modelOrder = {
     const pedido = JSON.parse(contenido);
     return pedido;
   },
-
+  // escribir archivo
   writeOrder: (pedidos: any) => {
     const pedido = JSON.stringify(pedidos, null, 2);
     fs.writeFileSync(filePath, pedido, "utf8");
   },
-
+// agregar
   addOrder: (pedido: { nombre: string; descripcion: string }) => {
     const pedidos = modelOrder.readOrder();
     const newPedido = {
@@ -31,7 +32,7 @@ const modelOrder = {
     modelOrder.writeOrder(pedidos);
     return pedidos;
   },
-
+// editar
   editOrder: (
     id: number,
     updateOrder: { nombre: string; descripcion: string }
@@ -46,6 +47,7 @@ const modelOrder = {
     modelOrder.writeOrder(orders);
     return true;
   },
+  // buscar
   searchOrder: (id: number) => {
     const orders = modelOrder.readOrder();
     const findOrder = orders.find((order: any) => order.id === id);
