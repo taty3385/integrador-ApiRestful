@@ -7,7 +7,7 @@
   {
     "id": 1750614392313,
     "nombre": "ensaladas",
-    "descripcion": "lechuga ,cebolla , tomate ,MORRON"
+    "descripcion": "lechuga ,cebolla , tomate ,morrones"
   },
   {
     "id": 1750614427314,
@@ -18,5 +18,15 @@
     "id": 1750701988213,
     "nombre": "nuggets",
     "descripcion": "polloS"
+  },
+  {
+    "id": 1750722670887,
+    "nombre": "nuggets",
+    "descripcion": "polloS"
+  },
+  {
+    "id": 1750722698942,
+    "nombre": "Papas fritas",
+    "descripcion": " con polloS"
   }
 ]
