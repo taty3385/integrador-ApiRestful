@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Gestión de Pedidos</title>
+</head>
+<body>
+  <h1>Bienvenido a la sección de Pedidos</h1>
+  <p>Aplicación para gestionar pedidos y usuarios</p>
+
+  <section class="login-section">
+    <h2>Registro de usuarios</h2>
+    <form id="registerForm">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" placeholder="Tu nombre" required />
+
+      <label for="contraseña">Contraseña</label>
+      <input type="password" id="contraseña" placeholder="Tu contraseña" required />
+
+      <div class="button-container">
+        <button type="submit">Registrar</button>
+        <button type="button" id="loginButton">Iniciar Sesión</button>
+      </div>
+    </form>
+  </section>
+
+ <section id="pedidos-section" class="pedidos-section" style="display: none;">
+  <h2>Gestión de Pedidos</h2>
+  <form id="pedidoForm">
+    <label for="pedido">Nombre del pedido</label>
+    <input type="text" id="pedido" placeholder="Escribí el pedido" required />
+
+    <div class="button-container">
+      <button type="submit">Crear Pedido</button>
+      <button type="button" id="listPedidosButton">Listar Pedidos</button>
+    </div>
+  </form>
+
+  <div id="pedidosList" class="lista-pedidos"></div>
+
+</section>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

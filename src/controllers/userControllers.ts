@@ -41,7 +41,7 @@ const userControllers = {
        return;
     }
     const users = modelUser.readUser();
-    const user = users.find((u: any) => u.nombre === nombre);
+    const user = users.find((u: any) => u.nombre.toLowerCase() === nombre.toLowerCase());
     if (!user) {
      res.status(404).json({ message: "Usuario no encontrado" });
       return;
