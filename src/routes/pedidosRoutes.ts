@@ -11,7 +11,7 @@ routes.post('/register', userController.registerUser);
 routes.post('/login', userController.loginUser);
 
 //rutas protegidas de pedidos
-routes.get('/orders', midlleware.authenticateUser, orderController.getOrders);
+routes.get('/orders', orderController.getOrders);
 routes.post('/orders', midlleware.authenticateUser, orderController.addOrders);
 routes.get('/orders/:id', midlleware.authenticateUser, orderController.searchOrder);
 routes.delete('/orders/:id', midlleware.authenticateUser, orderController.deleteOrder);
