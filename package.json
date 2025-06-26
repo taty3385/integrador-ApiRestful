@@ -2,9 +2,12 @@
   "name": "integrador-apirestful",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+
+    "scripts": {
+  "build": "tsc",
+  "start": "node dist/backend/app.js", 
+  "dev": "ts-node-dev --respawn backend/app.ts"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
