@@ -1,15 +1,15 @@
-const API_URL = "http://localhost:3000/api"; // Ajustá el puerto si es 4000
+const API_URL = "http://localhost:3000/api";
 
 let editingId = null; // Si es null, crea. Si tiene ID, edita.
 
-// Prevenir el submit automático del formulario de pedidos (cuando se presiona Enter)
+
 document.getElementById("pedidoForm").addEventListener("submit", function (e) {
   e.preventDefault();
 });
 
 function manejarTokenExpirado(response) {
   if (response.status === 403 || response.status === 401) {
-    mostrarModalExito("Sesión expirada. Volvé a iniciar sesión.");
+    mostrarModal("Sesión expirada. Volvé a iniciar sesión.");
     localStorage.removeItem("token");
     document.getElementById("pedidos-section").style.display = "none";
     document.getElementById("login-section").style.display = "block";
@@ -57,12 +57,14 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     const data = await response.json();
 
     if (response.ok) {
-      alert("Login exitoso");
+      mostrarModal("Login exitoso");
       localStorage.setItem("token", data.token);
       document.getElementById("pedidos-section").style.display = "block";
       document.querySelector(".login-section").style.display = "none";
+      document.getElementById("cerrarSesionContainer").style.display = "block";
+
     } else {
-      alert(data.message || "Error en login");
+      mostrarModal(data.message || "Error en login");
     }
   } catch (err) {
     console.error("Error en login:", err);
@@ -114,7 +116,16 @@ document
         const submitBtn = document.getElementById("crearPedidoButton");
         submitBtn.textContent = "Crear Pedido";
         submitBtn.classList.remove("editando");
+        mostrarModal(data.message || "Pedido guardado exitosamente");
+        fetchOrders(); // Recargar lista de pedidos
        
+        fetchOrders();
+
+       
+        document.getElementById("pedido").value = "";
+        document.getElementById("descripcion").value = "";
+
+        document.getElementById("pedidosList").style.display = "block";
       } else {
         alert(data.message || "Error en la operación");
       }
@@ -141,6 +152,7 @@ async function fetchOrders() {
 
     if (response.ok) {
       const pedidosList = document.getElementById("pedidosList");
+      pedidosList.style.display = "block"; 
       pedidosList.innerHTML = "";
 
       if (!data.orders || data.orders.length === 0) {
@@ -192,10 +204,10 @@ async function fetchOrders() {
         //? Botón Editar  revisarrr
         const btnEditar = document.createElement("button");
         btnEditar.textContent = "Editar";
-        btnEditar.style.backgroundColor = "orange"; // Naranja
+        btnEditar.style.backgroundColor = "orange"; 
         btnEditar.style.marginRight = "10px";
         btnEditar.addEventListener("click", () => {
-         editarPedido(pedido);
+          editarPedido(pedido);
         });
 
         // Botón Eliminar
@@ -225,14 +237,17 @@ async function fetchOrders() {
   }
 }
 
-document
-  .getElementById("listPedidosButton")
-  .addEventListener("click", fetchOrders);
+document.getElementById("listPedidosButton").addEventListener("click", () => {
+  const pedidosList = document.getElementById("pedidosList");
+  pedidosList.style.display = "block"; 
+  fetchOrders(); 
+});
+
 // Buscar pedidos
 document
   .getElementById("buscarPedidoButton")
   .addEventListener("click", async (e) => {
-    e.preventDefault(); // Evita recarga
+    e.preventDefault(); 
     const termino = document.getElementById("buscarPedido").value.toLowerCase();
     const token = localStorage.getItem("token");
 
@@ -259,10 +274,9 @@ document
     }
   });
 
-
-
 function renderPedidos(pedidos) {
   const pedidosList = document.getElementById("pedidosList");
+  pedidosList.style.display = "block";
   pedidosList.innerHTML = "";
 
   if (pedidos.length === 0) {
@@ -309,16 +323,15 @@ function renderPedidos(pedidos) {
   pedidosList.appendChild(table);
 }
 
-
 // Editar pedido
 function editarPedido(pedido) {
-  document.getElementById("pedido").value = pedido.nombre; // completar campo
+  document.getElementById("pedido").value = pedido.nombre; 
   document.getElementById("descripcion").value = pedido.descripcion;
   editingId = pedido.id;
- const submitBtn = document.querySelector("#crearPedidoButton");
+  const submitBtn = document.querySelector("#crearPedidoButton");
   submitBtn.textContent = "Actualizar Pedido";
   submitBtn.classList.add("editando");
- 
+  document.getElementById("pedidosList").style.display = "block";
 }
 
 // Eliminar pedido
@@ -352,13 +365,13 @@ document
           Authorization: `Bearer ${token}`,
         },
       });
-      if (manejarTokenExpirado(response)) return; // Manejar token expirado
+      if (manejarTokenExpirado(response)) return; 
 
       const data = await response.json();
-      mostrarModalExito(data.message || "Pedido eliminado");
+      mostrarModal(data.message || "Pedido eliminado");
 
       document.getElementById("modalEliminar").style.display = "none";
-      fetchOrders(); // Recargar lista
+      fetchOrders(); 
     } catch (err) {
       console.error("Error eliminando pedido:", err);
     }
@@ -366,7 +379,7 @@ document
     pedidoAEliminar = null;
   });
 
-function mostrarModalExito(mensaje = "Operación exitosa") {
+function mostrarModal(mensaje = "Operación exitosa") {
   const modal = document.getElementById("modalExito");
   const texto = document.getElementById("mensaje-exito");
   texto.textContent = mensaje;
@@ -396,9 +409,26 @@ window.addEventListener("DOMContentLoaded", () => {
   if (!token) {
     document.getElementById("pedidos-section").style.display = "none";
     document.querySelector(".login-section").style.display = "block";
+    document.getElementById("cerrarSesionContainer").style.display = "none";
   } else {
     document.getElementById("pedidos-section").style.display = "block";
     document.querySelector(".login-section").style.display = "none";
-    fetchOrders(); // ✅ Cargar la lista automáticamente si hay token
+    document.getElementById("cerrarSesionContainer").style.display = "block";
+    fetchOrders();
+  }
+});
+// Cerrar sesión
+document.getElementById("cerrarSesionBtn").addEventListener("click", () => {
+  localStorage.removeItem("token");
+  document.getElementById("pedidos-section").style.display = "none";
+  document.querySelector(".login-section").style.display = "block";
+  document.getElementById("cerrarSesionContainer").style.display = "none";
+  mostrarModal("Sesión cerrada correctamente");
+});
+// Cerrar modal de éxito al hacer clic fuera de él
+window.addEventListener("click", (event) => {
+  const modal = document.getElementById("modalExito");
+  if (event.target === modal) {
+    modal.style.display = "none";
   }
 });

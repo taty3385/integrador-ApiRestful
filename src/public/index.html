@@ -88,17 +88,11 @@
         <button type="button" id="listPedidosButton">Listar Pedidos</button>
       </div>
       <section class="buscar-pedido">
-        <input
-          type="text"
-          id="buscarPedido"
-          placeholder="Buscar por nombre "
-          
-        />
+        <input type="text" id="buscarPedido" placeholder="Buscar por nombre " />
         <button id="buscarPedidoButton" class="buscar-button">Buscar</button>
       </section>
-      
 
-      <div id="pedidosList" class="lista-pedidos" style="display: block"></div>
+      <div id="pedidosList" class="lista-pedidos" style="display: none"></div>
     </section>
 
     <div id="modalEliminar" class="modal">
@@ -117,6 +111,13 @@
           <button id="cerrarExito">Cerrar</button>
         </div>
       </div>
+    </div>
+    <!-- Botón de Cerrar sesión -->
+    <div
+      id="cerrarSesionContainer"
+      style="display: none; position: absolute; top: 20px; right: 30px"
+    >
+      <button id="cerrarSesionBtn" class="logout-button">Cerrar sesión</button>
     </div>
 
     <script src="script.js"></script>
