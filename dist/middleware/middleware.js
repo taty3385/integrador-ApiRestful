@@ -14,7 +14,7 @@ const middleware = {
         }
         try {
             const decoded = jsonwebtoken_1.default.verify(token, secretKey);
-            req.nombre = decoded;
+            req.nombre = decoded.nombre;
             next();
         }
         catch (error) {

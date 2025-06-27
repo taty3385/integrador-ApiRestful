@@ -10,7 +10,12 @@ dotenv.config();
 const app= express()
 const PORT= 3000;
 
-app.use(cors())
+app.use(cors({
+  origin: '*',
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}));
+
 app.use(express.json())
 
 app.use(express.static(path.join(__dirname, 'public')));

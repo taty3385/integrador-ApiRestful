@@ -13,8 +13,8 @@ const middleware = {
     }
 
     try {
-      const decoded = jwt.verify(token, secretKey);
-      (req as any).nombre = decoded;
+      const decoded = jwt.verify(token, secretKey) as { nombre: string };
+      (req as any).nombre = decoded.nombre;
       next();
     } catch (error) {
       res.status(403).json({ message: "Token inválido" });
