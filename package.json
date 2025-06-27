@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc && mkdir -p dist/backend/public && cp -r backend/public/* dist/backend/public",
-    "start": "node dist/backend/app.js",
+    "start": "node dist/app.js",
     "dev": "ts-node-dev --respawn backend/app.ts"
   },
   "keywords": [],
