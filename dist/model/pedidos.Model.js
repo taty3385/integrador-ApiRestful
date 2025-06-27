@@ -9,13 +9,12 @@ const filePath = path_1.default.resolve(__dirname, "../data/pedidos.json");
 const modelOrder = {
     // leer archivo
     readOrder: () => {
-        const contenido = fs_1.default.readFileSync(filePath, "utf8");
-        if (!contenido) {
+        if (!fs_1.default.existsSync(filePath)) {
             fs_1.default.writeFileSync(filePath, "[]", "utf8");
             return [];
         }
-        const pedido = JSON.parse(contenido);
-        return pedido;
+        const contenido = fs_1.default.readFileSync(filePath, "utf8");
+        return contenido ? JSON.parse(contenido) : [];
     },
     // escribir archivo
     writeOrder: (pedidos) => {

@@ -6,16 +6,16 @@ const filePath = path.resolve(__dirname, "../data/pedidos.json");
 
 const modelOrder = {
   // leer archivo
-  readOrder: () => {
-    const contenido = fs.readFileSync(filePath, "utf8");
-    if (!contenido) {
-      fs.writeFileSync(filePath, "[]", "utf8");
-      return [];
-    }
+readOrder: () => {
+  if (!fs.existsSync(filePath)) {
+    fs.writeFileSync(filePath, "[]", "utf8");
+    return [];
+  }
 
-    const pedido = JSON.parse(contenido);
-    return pedido;
-  },
+  const contenido = fs.readFileSync(filePath, "utf8");
+  return contenido ? JSON.parse(contenido) : [];
+},
+
   // escribir archivo
   writeOrder: (pedidos: any) => {
     const pedido = JSON.stringify(pedidos, null, 2);
