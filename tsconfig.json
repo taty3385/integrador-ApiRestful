@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es2020" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
-
-    /* Modules */
-    "module": "commonjs" /* Specify what module code is generated. */,
-    "rootDir": "./backend" /* Specify the root folder within your source files. */,
-    "outDir": "./dist" /* Specify an output folder for all emitted files. */,
-    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
-    /* Type Checking */
-    "strict": true /* Enable all strict type-checking options. */
+    "target": "ES2020",
+    "module": "CommonJS",
+    "rootDir": "./backend",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "types": ["node"],
+    "skipLibCheck": true
   },
-  "include": ["backend/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["backend/**/*"]
 }

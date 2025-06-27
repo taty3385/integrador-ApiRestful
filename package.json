@@ -2,12 +2,11 @@
   "name": "integrador-apirestful",
   "version": "1.0.0",
   "main": "index.js",
-
-    "scripts": {
-  "build": "tsc",
-  "start": "node dist/backend/app.js", 
-  "dev": "ts-node-dev --respawn backend/app.ts"
-},
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/backend/app.js",
+    "dev": "ts-node-dev --respawn backend/app.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -17,6 +16,7 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.0.4",
     "typescript": "^5.8.3"
   },
   "dependencies": {
