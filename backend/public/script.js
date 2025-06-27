@@ -1,7 +1,13 @@
-const API_URL = "/api";
+const API_URL =
+  window.location.port === "5500"
+    ? "http://localhost:3000/api"
+    : "/api";
+
+console.log("Usando API_URL:", API_URL);
+
+
 
 let editingId = null; // Si es null, crea. Si tiene ID, edita.
-
 
 document.getElementById("pedidoForm").addEventListener("submit", function (e) {
   e.preventDefault();
@@ -62,7 +68,6 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
       document.getElementById("pedidos-section").style.display = "block";
       document.querySelector(".login-section").style.display = "none";
       document.getElementById("cerrarSesionContainer").style.display = "block";
-
     } else {
       mostrarModal(data.message || "Error en login");
     }
@@ -118,10 +123,9 @@ document
         submitBtn.classList.remove("editando");
         mostrarModal(data.message || "Pedido guardado exitosamente");
         fetchOrders(); // Recargar lista de pedidos
-       
+
         fetchOrders();
 
-       
         document.getElementById("pedido").value = "";
         document.getElementById("descripcion").value = "";
 
@@ -152,7 +156,7 @@ async function fetchOrders() {
 
     if (response.ok) {
       const pedidosList = document.getElementById("pedidosList");
-      pedidosList.style.display = "block"; 
+      pedidosList.style.display = "block";
       pedidosList.innerHTML = "";
 
       if (!data.orders || data.orders.length === 0) {
@@ -204,7 +208,7 @@ async function fetchOrders() {
         //? Botón Editar  revisarrr
         const btnEditar = document.createElement("button");
         btnEditar.textContent = "Editar";
-        btnEditar.style.backgroundColor = "orange"; 
+        btnEditar.style.backgroundColor = "orange";
         btnEditar.style.marginRight = "10px";
         btnEditar.addEventListener("click", () => {
           editarPedido(pedido);
@@ -239,15 +243,15 @@ async function fetchOrders() {
 
 document.getElementById("listPedidosButton").addEventListener("click", () => {
   const pedidosList = document.getElementById("pedidosList");
-  pedidosList.style.display = "block"; 
-  fetchOrders(); 
+  pedidosList.style.display = "block";
+  fetchOrders();
 });
 
 // Buscar pedidos
 document
   .getElementById("buscarPedidoButton")
   .addEventListener("click", async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     const termino = document.getElementById("buscarPedido").value.toLowerCase();
     const token = localStorage.getItem("token");
 
@@ -325,7 +329,7 @@ function renderPedidos(pedidos) {
 
 // Editar pedido
 function editarPedido(pedido) {
-  document.getElementById("pedido").value = pedido.nombre; 
+  document.getElementById("pedido").value = pedido.nombre;
   document.getElementById("descripcion").value = pedido.descripcion;
   editingId = pedido.id;
   const submitBtn = document.querySelector("#crearPedidoButton");
@@ -365,13 +369,13 @@ document
           Authorization: `Bearer ${token}`,
         },
       });
-      if (manejarTokenExpirado(response)) return; 
+      if (manejarTokenExpirado(response)) return;
 
       const data = await response.json();
       mostrarModal(data.message || "Pedido eliminado");
 
       document.getElementById("modalEliminar").style.display = "none";
-      fetchOrders(); 
+      fetchOrders();
     } catch (err) {
       console.error("Error eliminando pedido:", err);
     }
