@@ -15,7 +15,7 @@ app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
 app.get('/', (req, res) => {
-    res.sendFile(path_1.default.join(__dirname, './public', 'index.html'));
+    res.sendFile(path_1.default.join(__dirname, 'backend', './public', 'index.html'));
 });
 app.use('/api', pedidosRoutes_1.default);
 app.listen(PORT, () => {
