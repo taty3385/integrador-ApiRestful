@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build:win": "tsc && if not exist dist\\public mkdir dist\\public && xcopy backend\\public dist\\public /E /Y /Q && if not exist dist\\data mkdir dist\\data && copy backend\\data\\user.json dist\\data\\",
-    "build:linux": "tsc && mkdir -p dist/public && cp -r backend/public/* dist/public",
+   "build:win": "tsc && if not exist dist\\public mkdir dist\\public && xcopy backend\\public dist\\public /E /Y /Q && if not exist dist\\data mkdir dist\\data && copy backend\\data\\user.json dist\\data\\ && copy backend\\data\\pedidos.json dist\\data\\",
+  "build:linux": "tsc && mkdir -p dist/public && cp -r backend/public/* dist/public",
     "start": "node dist/app.js",
     "dev": "ts-node-dev --respawn backend/app.ts"
   },
