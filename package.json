@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build:win": "tsc && mkdir -p dist/public && cp -r backend/public/* dist/public",
+    "build:win": "tsc && if not exist dist\\public mkdir dist\\public && xcopy backend\\public dist\\public /E /Y /Q",
     "build:linux": "tsc && mkdir -p dist/public && cp -r backend/public/* dist/public",
     "start": "node dist/app.js",
     "dev": "ts-node-dev --respawn backend/app.ts"
