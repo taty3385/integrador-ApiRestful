@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Gestión de Pedidos</title>
+  </head>
+  <body>
+    <h1>Bienvenido a la sección de Pedidos</h1>
+    <p>Aplicación para gestionar pedidos y usuarios</p>
+    <section id="login-section" class="login-section">
+      <!-- Registro de usuarios -->
+      <div id="registro-formulario" class="registro-formulario">
+        <h2>Registro de usuarios</h2>
+        <form id="registerForm">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" placeholder="Tu nombre" required />
+
+          <label for="contraseña">Contraseña</label>
+          <input
+            type="password"
+            id="contraseña"
+            placeholder="Tu contraseña"
+            required
+          />
+
+          <div class="button-container">
+            <button type="submit">Registrar</button>
+          </div>
+        </form>
+        <p style="margin-top: 10px; text-align: center">
+          ¿Ya tenés cuenta? <button id="irALogin">Iniciar sesión</button>
+        </p>
+      </div>
+
+      <!-- Login de usuarios -->
+      <div id="login-formulario" style="display: none">
+        <h2>Iniciar Sesión</h2>
+        <form id="loginForm">
+          <label for="login-nombre">Nombre</label>
+          <input
+            type="text"
+            id="login-nombre"
+            placeholder="Tu nombre"
+            required
+          />
+
+          <label for="login-contraseña">Contraseña</label>
+          <input
+            type="password"
+            id="login-contraseña"
+            placeholder="Tu contraseña"
+            required
+          />
+
+          <div class="button-container">
+            <button type="submit">Iniciar Sesión</button>
+          </div>
+        </form>
+        <p style="margin-top: 10px; text-align: center">
+          ¿No tenés cuenta? <button id="irARegistro">Registrarse</button>
+        </p>
+      </div>
+    </section>
+
+    <section id="pedidos-section" class="pedidos-section" style="display: none">
+      <h2>Gestión de Pedidos</h2>
+      <form id="pedidoForm">
+        <label for="pedido">Nombre del pedido</label>
+        <input
+          type="text"
+          id="pedido"
+          placeholder="Escribí el pedido"
+          required
+        />
+
+        <label for="descripcion">Descripción del pedido</label>
+        <input
+          type="text"
+          id="descripcion"
+          placeholder="Descripción breve"
+          required
+        />
+      </form>
+      <div class="button-container">
+        <button type="button" id="crearPedidoButton">Crear Pedido</button>
+        <button type="button" id="listPedidosButton">Listar Pedidos</button>
+      </div>
+      <section class="buscar-pedido">
+        <input type="text" id="buscarPedido" placeholder="Buscar por nombre " />
+        <button id="buscarPedidoButton" class="buscar-button">Buscar</button>
+      </section>
+
+      <div id="pedidosList" class="lista-pedidos" style="display: none"></div>
+    </section>
+
+    <div id="modalEliminar" class="modal">
+      <div class="modal-contenido">
+        <p id="mensaje-modal"></p>
+        <div class="botones-modal">
+          <button id="cancelarEliminar">Cancelar</button>
+          <button id="confirmarEliminar">Eliminar</button>
+        </div>
+      </div>
+    </div>
+    <div id="modalExito" class="modal">
+      <div class="modal-contenido">
+        <p id="mensaje-exito"></p>
+        <div class="botones-modal">
+          <button id="cerrarExito">Cerrar</button>
+        </div>
+      </div>
+    </div>
+    <!-- Botón de Cerrar sesión -->
+    <div
+      id="cerrarSesionContainer"
+      style="display: none; position: absolute; top: 20px; right: 30px"
+    >
+      <button id="cerrarSesionBtn" class="logout-button">Cerrar sesión</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

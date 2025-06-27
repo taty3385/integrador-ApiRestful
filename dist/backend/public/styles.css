@@ -1,0 +1,223 @@
+body {
+  background-image: url('img/portada.png');
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.login-section {
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 30px 25px;
+  border-radius: 12px;
+  width: 30%;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+h1 {
+  color: #ffffff;
+  text-shadow: 1px 1px 4px #000;
+  margin-top: 30px;
+}
+
+h2 {
+  color: #f0f0f0;
+  text-shadow: 1px 1px 3px #000;
+}
+
+p {
+  color: #ddd;
+  text-shadow: 1px 1px 2px #000;
+  margin-bottom: 50px;
+}
+
+
+.pedidos-section {
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 30px 25px;
+  border-radius: 12px;
+  width: 70%;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  margin-bottom: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-top: 12px;
+  color: white;
+  font-weight: bold;
+}
+
+form input {
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+form input:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  outline: none;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  gap: 10px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: scale(1.02);
+}
+
+.buscar-button {
+  background-color: #007bff;
+  padding: 10px 20px;
+  font-size: 15px;
+}
+
+.buscar-button:hover {
+  background-color: #0069d9;
+}
+
+.lista-pedidos {
+  margin-top: 20px;
+  background: white;
+  border-radius: 6px;
+  padding: 15px;
+  color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.editando {
+  background-color: orange !important;
+  color: white;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-contenido {
+  background-color: white;
+  margin: 10% auto;
+  padding: 25px;
+  width: 320px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.botones-modal button {
+  margin: 10px 5px;
+  padding: 10px 18px;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+}
+
+.botones-modal button:hover {
+  opacity: 0.9;
+}
+
+#modalExito .modal-contenido {
+  background-color: #d1e7dd;
+  border-left: 6px solid #198754;
+  color: #0f5132;
+}
+
+#modalExito p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.buscar-pedido {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+#buscarPedido {
+  padding: 10px;
+
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: box-shadow 0.3s ease;
+}
+
+#buscarPedido:focus {
+  outline: none;
+  box-shadow: 0 0 5px #007bff;
+}
+
+.buscar-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.buscar-button:hover {
+  background-color: #0056b3;
+}
+
+
+.buscar-pedido> input {
+  background-color: #e0dede;
+  color: #333;
+  padding: 10px 15px;
+  width: 90%;
+}
+.logout-button {
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}
