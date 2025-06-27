@@ -2,7 +2,9 @@ import fs from "fs";
 import path from "path";
 import bcrypt from "bcrypt";
 
-const userPath = path.join(__dirname, "../data/user.json");
+const userPath = path.resolve("/data/user.json");
+console.log("Ruta del archivo user.json:", userPath);
+
 
 const modelUser = {
   readUser: () => {
