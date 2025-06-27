@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const filePath = path.join(__dirname, "../data/pedidos.json");
+const filePath = path.resolve(__dirname, "../data/pedidos.json");
 
 
 const modelOrder = {
