@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build:win": "tsc && if not exist dist\\public mkdir dist\\public && xcopy backend\\public dist\\public /E /Y /Q",
+    "build:win": "tsc && if not exist dist\\public mkdir dist\\public && xcopy backend\\public dist\\public /E /Y /Q && if not exist dist\\data mkdir dist\\data && copy backend\\data\\user.json dist\\data\\",
     "build:linux": "tsc && mkdir -p dist/public && cp -r backend/public/* dist/public",
     "start": "node dist/app.js",
     "dev": "ts-node-dev --respawn backend/app.ts"
@@ -17,7 +17,6 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.10",
-   
     "typescript": "^5.8.3"
   },
   "dependencies": {
@@ -27,6 +26,5 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "@types/node": "^20.4.0"
-
   }
 }

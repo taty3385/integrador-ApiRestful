@@ -6,7 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
-const userPath = path_1.default.join(__dirname, "../data/user.json");
+const userPath = path_1.default.resolve("/data/user.json");
+console.log("Ruta del archivo user.json:", userPath);
 const modelUser = {
     readUser: () => {
         const users = fs_1.default.readFileSync(userPath, "utf8");
