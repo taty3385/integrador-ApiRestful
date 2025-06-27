@@ -22,12 +22,16 @@ const userControllers = {
             return;
         }
         else if (contraseña.length < 6) {
-            res.status(400).json({ message: "La contraseña debe tener al menos 6 caracteres" });
+            res
+                .status(400)
+                .json({ message: "La contraseña debe tener al menos 6 caracteres" });
             return;
         }
         try {
             const newUser = await usuariosModel_1.default.addUser({ nombre, contraseña });
-            res.status(201).json({ message: 'usuario registrado correctamente', user: newUser });
+            res
+                .status(201)
+                .json({ message: "usuario registrado correctamente", user: newUser });
             return;
         }
         catch (error) {
@@ -48,14 +52,25 @@ const userControllers = {
             res.status(404).json({ message: "Usuario no encontrado" });
             return;
         }
-        const isPasswordValid = await bcrypt_1.default.compare(contraseña, user.contraseña);
-        if (!isPasswordValid) {
-            res.status(401).json({ message: "Contraseña incorrecta" });
+        try {
+            const isPasswordValid = await bcrypt_1.default.compare(contraseña, user.contraseña);
+            if (!isPasswordValid) {
+                res.status(401).json({ message: "Contraseña incorrecta" });
+                return;
+            }
+            const token = jsonwebtoken_1.default.sign({ id: user.id, nombre: user.nombre }, secretKey, {
+                expiresIn: "1h",
+            });
+            res.status(200).json({ token });
             return;
         }
-        const token = jsonwebtoken_1.default.sign({ id: user.id, nombre: user.nombre }, secretKey, { expiresIn: '1h' });
-        res.status(200).json({ token });
-        return;
+        catch (err) {
+            console.error("Error en login:", err);
+            res
+                .status(500)
+                .json({ message: "Error interno al intentar iniciar sesión" });
+            return;
+        }
     },
 };
 exports.default = userControllers;

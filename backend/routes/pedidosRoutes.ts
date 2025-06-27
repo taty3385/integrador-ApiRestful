@@ -1,5 +1,5 @@
 import  orderController  from '../controllers/pedidosController';
-import userController from '../controllers/userControllers';
+import userControllers from '../controllers/userControllers';
 import midlleware from '../middleware/middleware';
 import { Router } from 'express';
 
@@ -7,8 +7,8 @@ const routes = Router();
 
 // Rutas de usuario
 
-routes.post('/register', userController.registerUser);
-routes.post('/login', userController.loginUser);
+routes.post('/register', userControllers.registerUser);
+routes.post('/login', userControllers.loginUser);
 
 //rutas protegidas de pedidos
 routes.get('/orders', orderController.getOrders);
@@ -18,3 +18,4 @@ routes.delete('/orders/:id', midlleware.authenticateUser, orderController.delete
 routes.put('/orders/:id', midlleware.authenticateUser, orderController.edditOrder);
 
 export default routes;
+
