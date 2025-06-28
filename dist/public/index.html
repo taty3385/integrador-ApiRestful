@@ -67,19 +67,35 @@
     <section id="pedidos-section" class="pedidos-section" style="display: none">
       <h2>Gestión de Pedidos</h2>
       <form id="pedidoForm">
-        <label for="pedido">Nombre del pedido</label>
-        <input
-          type="text"
-          id="pedido"
-          placeholder="Escribí el pedido"
-          required
-        />
+        <label for="pedido">Tipo de comida</label>
+        <select id="pedido" required>
+          <option value="" disabled selected>🍽️ Seleccioná un pedido</option>
+          <option value="Pizza">🍕 Pizza</option>
+          <option value="Hamburguesa">🍔 Hamburguesa</option>
+          <option value="Empanadas">🥟 Empanadas</option>
+          <option value="Sushi">🍣 Sushi</option>
+          <option value="Ensalada">🥗 Ensalada</option>
+          <option value="Tacos">🌮 Tacos</option >
+          <option value="Pasta">🍝 Pasta</option>
+          <option value="Postre">🍰 Postre</option>
+          <option value="Bebida">🥤 Bebida</option >
+          <option value="Otro">🍽️ Otro</option>
+        </select>
 
         <label for="descripcion">Descripción del pedido</label>
         <input
           type="text"
           id="descripcion"
           placeholder="Descripción breve"
+          required
+        />
+        <!-- cantidad agrego  -->
+        <label for="cantidad">Cantidad</label>
+        <input
+          type="number"
+          id="cantidad"
+          placeholder="Cantidad"
+          min="1"
           required
         />
       </form>

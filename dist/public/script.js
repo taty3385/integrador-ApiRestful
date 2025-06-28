@@ -95,6 +95,9 @@ document
 
     const nombre = document.getElementById("pedido").value;
     const descripcion = document.getElementById("descripcion").value;
+    const cantidad = parseInt(document.getElementById("cantidad").value);
+
+
     const token = localStorage.getItem("token");
 
     const url = editingId
@@ -109,7 +112,7 @@ document
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ nombre, descripcion }),
+        body: JSON.stringify({ nombre, descripcion ,cantidad }),
       });
 
       if (manejarTokenExpirado(response)) return;
@@ -171,7 +174,7 @@ async function fetchOrders() {
 
       // Encabezado
       const headerRow = document.createElement("tr");
-      ["Pedido", "Nombre", "Descripción", "Acciones"].forEach((titulo) => {
+      ["Pedido", "Nombre", "Descripción", "Cantidad", "Acciones"].forEach((titulo) => {
         const th = document.createElement("th");
         th.textContent = titulo;
         th.style.border = "1px solid #ccc";
@@ -183,6 +186,7 @@ async function fetchOrders() {
 
       // Filas de pedidos
       data.orders.forEach((pedido, index) => {
+        console.log("Pedido individual:", pedido);
         const row = document.createElement("tr");
 
         const tdIndex = document.createElement("td");
@@ -195,17 +199,24 @@ async function fetchOrders() {
         tdNombre.style.border = "1px solid #ccc";
         tdNombre.style.padding = "10px";
 
+        
         const tdDescripcion = document.createElement("td");
         tdDescripcion.textContent = pedido.descripcion;
         tdDescripcion.style.border = "1px solid #ccc";
         tdDescripcion.style.padding = "10px";
+
+        // Agregar columna de Cantidad
+        const tdCantidad = document.createElement("td");
+        tdCantidad.textContent = pedido.cantidad;
+        tdCantidad.style.border = "1px solid #ccc";
+        tdCantidad.style.padding = "10px";
 
         const tdAcciones = document.createElement("td");
         tdAcciones.style.border = "1px solid #ccc";
         tdAcciones.style.padding = "10px";
         tdAcciones.style.textAlign = "center";
 
-        //? Botón Editar  revisarrr
+      
         const btnEditar = document.createElement("button");
         btnEditar.textContent = "Editar";
         btnEditar.style.backgroundColor = "orange";
@@ -227,6 +238,7 @@ async function fetchOrders() {
         row.appendChild(tdIndex);
         row.appendChild(tdNombre);
         row.appendChild(tdDescripcion);
+        row.appendChild(tdCantidad); 
         row.appendChild(tdAcciones);
 
         table.appendChild(row);

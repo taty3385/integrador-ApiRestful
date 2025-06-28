@@ -28,6 +28,7 @@ const modelOrder = {
             id: Date.now(),
             nombre: pedido.nombre,
             descripcion: pedido.descripcion,
+            cantidad: pedido.cantidad || 1,
         };
         pedidos.push(newPedido);
         modelOrder.writeOrder(pedidos);

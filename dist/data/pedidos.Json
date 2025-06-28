@@ -1,12 +1,8 @@
 [
   {
-    "id": 1750973377145,
-    "nombre": "ssssss",
-    "descripcion": "eeeeeeeee"
-  },
-  {
-    "id": 1750994413297,
-    "nombre": "perro",
-    "descripcion": "lechuga ,cebolla , tomate wueso"
+    "id": 1751078140124,
+    "nombre": "Ensalada",
+    "descripcion": "lechuga ,cebolla , tomate wueso",
+    "cantidad": 2
   }
 ]
