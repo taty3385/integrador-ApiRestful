@@ -59,7 +59,7 @@ const userControllers = {
                 return;
             }
             const token = jsonwebtoken_1.default.sign({ id: user.id, nombre: user.nombre }, secretKey, {
-                expiresIn: "1h",
+                expiresIn: "2h",
             });
             res.status(200).json({ token });
             return;

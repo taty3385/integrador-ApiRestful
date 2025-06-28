@@ -7,27 +7,18 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const secretKey = process.env.SECRET_KEY || "default";
 const middleware = {
     authenticateUser: (req, res, next) => {
-        const authHeader = req.headers.authorization;
-        if (!authHeader || !authHeader.startsWith("Bearer ")) {
-            console.log("⛔ Token no proporcionado o mal formado");
+        const token = req.headers.authorization?.split(" ")[1];
+        if (!token) {
             res.status(401).json({ message: "Token no proporcionado" });
             return;
         }
-        const token = authHeader.split(" ")[1];
         try {
-            const decoded = jsonwebtoken_1.default.verify(token, secretKey);
-            if (!decoded || !decoded.nombre) {
-                console.log("❌ Token sin nombre");
-                res.status(403).json({ message: "Token inválido" });
-                return;
-            }
-            console.log("✅ Token válido:", decoded);
+            const decoded = jsonwebtoken_1.default.verify(token, secretKey); //
             req.nombre = decoded.nombre;
             next();
         }
         catch (error) {
-            console.log("❌ Token inválido o expirado:", error.message);
-            res.status(403).json({ message: "Token inválido o expirado" });
+            res.status(403).json({ message: "Token inválido" });
             return;
         }
     }
