@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const usuariosModel_1 = __importDefault(require("../model/usuariosModel"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const secretKey = process.env.SECRET || "default";
+const secretKey = process.env.SECRET_KEY || "default";
 const userControllers = {
     // Registro de usuario
     registerUser: async (req, res) => {

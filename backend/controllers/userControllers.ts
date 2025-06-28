@@ -3,7 +3,7 @@ import modelUser from "../model/usuariosModel";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const secretKey = process.env.SECRET || "default";
+const secretKey = process.env.SECRET_KEY || "default";
 
 const userControllers = {
   // Registro de usuario
