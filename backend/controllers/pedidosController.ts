@@ -14,12 +14,12 @@ const pedidosController = {
   },
   // agregar pedidos
   addOrders: (req: Request, res: Response) => {
-    const { nombre, descripcion } = req.body;
-    if (!nombre || !descripcion) {
+    const { nombre, descripcion , cantidad } = req.body;
+    if (!nombre || !descripcion || !cantidad) {
       res.status(400).json({ message: "Faltan datos para crear el pedido" });
       return;
     }
-    const newOrder = modelOrder.addOrder({ nombre, descripcion });
+    const newOrder = modelOrder.addOrder({ nombre, descripcion , cantidad });
     res.status(201).json({ message: "Pedido creado", newOrder });
     return;
   },

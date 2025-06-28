@@ -22,12 +22,13 @@ readOrder: () => {
     fs.writeFileSync(filePath, pedido, "utf8");
   },
 // agregar
-  addOrder: (pedido: { nombre: string; descripcion: string }) => {
+  addOrder: (pedido: { nombre: string; descripcion: string , cantidad: number }) => {
     const pedidos = modelOrder.readOrder();
     const newPedido = {
       id: Date.now(),
       nombre: pedido.nombre,
       descripcion: pedido.descripcion,
+      cantidad: pedido.cantidad || 1,
     };
     pedidos.push(newPedido);
     modelOrder.writeOrder(pedidos);
