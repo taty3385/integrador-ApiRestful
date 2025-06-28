@@ -12,7 +12,7 @@ const routes = (0, express_1.Router)();
 routes.post('/register', userControllers_1.default.registerUser);
 routes.post('/login', userControllers_1.default.loginUser);
 //rutas protegidas de pedidos
-routes.get('/orders', pedidosController_1.default.getOrders);
+routes.get('/orders', middleware_1.default.authenticateUser, pedidosController_1.default.getOrders);
 routes.post('/orders', middleware_1.default.authenticateUser, pedidosController_1.default.addOrders);
 routes.get('/orders/:id', middleware_1.default.authenticateUser, pedidosController_1.default.searchOrder);
 routes.delete('/orders/:id', middleware_1.default.authenticateUser, pedidosController_1.default.deleteOrder);
