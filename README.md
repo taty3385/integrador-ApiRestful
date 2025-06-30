@@ -1,11 +1,11 @@
 
-# 📦 Gestión de Pedidos - Proyecto Fronted  Backend 
+#  Gestión de Pedidos - Proyecto Fronted  Backend 
 
 Aplicación web para gestionar pedidos de comida, con sistema de autenticación, creación y listado de pedidos.
 
 ---
 
-## 📁 Estructura del Proyecto
+##  Estructura del Proyecto
 
 ```
 .
@@ -101,7 +101,7 @@ Abrí el archivo `public/index.html` directamente en el navegador o servilo con 
 
 ---
 
-## 🔐 Notas sobre seguridad
+##  Notas sobre seguridad
 
 - La `SECRET_KEY` del backend se define por variable de entorno o se puede dejar fija en el código.
 - El token JWT se guarda en localStorage y se envía en cada request protegida.
@@ -109,7 +109,7 @@ Abrí el archivo `public/index.html` directamente en el navegador o servilo con 
 
 ---
 
-## 🧪 Pruebas con Postman
+##  Pruebas con Postman
 
 Se realizaron pruebas de las rutas del backend utilizando Postman para verificar:
 
@@ -122,7 +122,7 @@ Estas pruebas aseguran que los endpoints funcionan correctamente y que las respu
 Documentacion de la API :  [Ver en Posman](https://documenter.getpostman.com/view/39239967/2sB34ZqPvw
 )
 
-## 🌍 Deploy en Render
+##  Deploy en Render
 
 El backend se encuentra desplegado en Render para pruebas en desarrollo:
 
@@ -130,7 +130,7 @@ El backend se encuentra desplegado en Render para pruebas en desarrollo:
 
 
 
-## 🧠 Autor
+##  Autor
 
 - **Nombre:** Tamara Zarate
 - **Stack:** JavaScript, TypeScript, Node.js, HTML, CSS
