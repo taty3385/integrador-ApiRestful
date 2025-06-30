@@ -10,32 +10,8 @@
     <h1>Bienvenido a la sección de Pedidos</h1>
     <p>Aplicación para gestionar pedidos y usuarios</p>
     <section id="login-section" class="login-section">
-      <!-- Registro de usuarios -->
-      <div id="registro-formulario" class="registro-formulario">
-        <h2>Registro de usuarios</h2>
-        <form id="registerForm">
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" placeholder="Tu nombre" required />
-
-          <label for="contraseña">Contraseña</label>
-          <input
-            type="password"
-            id="contraseña"
-            placeholder="Tu contraseña"
-            required
-          />
-
-          <div class="button-container">
-            <button type="submit">Registrar</button>
-          </div>
-        </form>
-        <p style="margin-top: 10px; text-align: center">
-          ¿Ya tenés cuenta? <button id="irALogin">Iniciar sesión</button>
-        </p>
-      </div>
-
       <!-- Login de usuarios -->
-      <div id="login-formulario" style="display: none">
+      <div id="login-formulario" style="display: block">
         <h2>Iniciar Sesión</h2>
         <form id="loginForm">
           <label for="login-nombre">Nombre</label>
@@ -62,25 +38,68 @@
           ¿No tenés cuenta? <button id="irARegistro">Registrarse</button>
         </p>
       </div>
+
+      <!-- Registro de usuarios -->
+      <div
+        id="registro-formulario"
+        class="registro-formulario"
+        ,
+        style="display: none"
+      >
+        <h2>Registro de usuarios</h2>
+        <form id="registerForm">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" placeholder="Tu nombre" required />
+
+          <label for="contraseña">Contraseña</label>
+          <input
+            type="password"
+            id="contraseña"
+            placeholder="Tu contraseña"
+            required
+          />
+
+          <div class="button-container">
+            <button type="submit">Registrar</button>
+          </div>
+        </form>
+        <p style="margin-top: 10px; text-align: center">
+          ¿Ya tenés cuenta? <button id="irALogin">Iniciar sesión</button>
+        </p>
+      </div>
     </section>
 
     <section id="pedidos-section" class="pedidos-section" style="display: none">
       <h2>Gestión de Pedidos</h2>
+
       <form id="pedidoForm">
         <label for="pedido">Tipo de comida</label>
-        <select id="pedido" required>
-          <option value="" disabled selected>🍽️ Seleccioná un pedido</option>
-          <option value="Pizza">🍕 Pizza</option>
-          <option value="Hamburguesa">🍔 Hamburguesa</option>
-          <option value="Empanadas">🥟 Empanadas</option>
-          <option value="Sushi">🍣 Sushi</option>
-          <option value="Ensalada">🥗 Ensalada</option>
-          <option value="Tacos">🌮 Tacos</option >
-          <option value="Pasta">🍝 Pasta</option>
-          <option value="Postre">🍰 Postre</option>
-          <option value="Bebida">🥤 Bebida</option >
-          <option value="Otro">🍽️ Otro</option>
-        </select>
+        <div class="comida-principal">
+          <select id="pedido" required>
+            <option value="" disabled selected>🍽️ Seleccioná un pedido</option>
+            <option value="Pizza">🍕 Pizza</option>
+            <option value="Hamburguesa">🍔 Hamburguesa</option>
+            <option value="Empanadas">🥟 Empanadas</option>
+            <option value="Sushi">🍣 Sushi</option>
+            <option value="Ensalada">🥗 Ensalada</option>
+            <option value="Tacos">🌮 Tacos</option>
+            <option value="Pasta">🍝 Pasta</option>
+            <option value="Postre">🍰 Postre</option>
+            <option value="Bebida">🥤 Bebida</option>
+            <option value="Otro">🍽️ Otro</option>
+          </select>
+          <button
+            type="button"
+            id="agregarComidaBtn"
+            class="agregar-comida-btn"
+          >
+              +
+          </button>
+          <button type="button" id="quitarComidaBtn" class="quitar-comida-btn">
+            -
+          </button>
+        </div>
+        <div id="comidasExtras"></div>
 
         <label for="descripcion">Descripción del pedido</label>
         <input

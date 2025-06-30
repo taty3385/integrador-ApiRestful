@@ -221,3 +221,36 @@ button:hover {
 .logout-button:hover {
   background-color: #c82333;
 }
+
+.comida-principal {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.comida-principal select {
+  flex: 1;
+}
+
+.comida-principal button {
+  padding: 10px 16px;
+  font-size: 18px;
+  background-color: #4CAF50;
+}
+
+.agregar-comida-btn,
+.quitar-comida-btn {
+  color: white ;              
+  background-color: #28a745; 
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.agregar-comida-btn:hover,
+.quitar-comida-btn:hover {
+  background-color: #218838;
+}
