@@ -1,11 +1,7 @@
 const API_URL =
-  window.location.port === "5500"
-    ? "http://localhost:3000/api"
-    : "/api";
+  window.location.port === "5500" ? "http://localhost:3000/api" : "/api";
 
 console.log("Usando API_URL:", API_URL);
-
-
 
 let editingId = null; // Si es null, crea. Si tiene ID, edita.
 
@@ -88,56 +84,107 @@ document.getElementById("irARegistro").addEventListener("click", () => {
 });
 
 // Crear pedido
+// document
+//   .getElementById("crearPedidoButton")
+//   .addEventListener("click", async (e) => {
+//     e.preventDefault();
+
+//     const nombre = document.getElementById("pedido").value;
+//     const descripcion = document.getElementById("descripcion").value;
+//     const cantidad = parseInt(document.getElementById("cantidad").value);
+
+//     const token = localStorage.getItem("token");
+
+//     const url = editingId
+//       ? `${API_URL}/orders/${editingId}`
+//       : `${API_URL}/orders`;
+//     const method = editingId ? "PUT" : "POST";
+
+//     try {
+//       const response = await fetch(url, {
+//         method,
+//         headers: {
+//           "Content-Type": "application/json",
+//           Authorization: `Bearer ${token}`,
+//         },
+//         body: JSON.stringify({ nombre, descripcion ,cantidad }),
+//       });
+
+//       if (manejarTokenExpirado(response)) return;
+
+//       const data = await response.json();
+//       if (response.ok) {
+//         editingId = null;
+
+//         const submitBtn = document.getElementById("crearPedidoButton");
+//         submitBtn.textContent = "Crear Pedido";
+//         submitBtn.classList.remove("editando");
+//         mostrarModal(data.message || "Pedido guardado exitosamente");
+//         fetchOrders(); // Recargar lista de pedidos
+
+//         fetchOrders();
+
+//         document.getElementById("pedido").value = "";
+//         document.getElementById("descripcion").value = "";
+
+//         document.getElementById("pedidosList").style.display = "block";
+//       } else {
+//         alert(data.message || "Error en la operación");
+//       }
+//     } catch (err) {
+//       console.error("Error al guardar pedido:", err);
+//     }
+//   });
 document
   .getElementById("crearPedidoButton")
   .addEventListener("click", async (e) => {
     e.preventDefault();
 
-    const nombre = document.getElementById("pedido").value;
+    const principal = document.getElementById("pedido").value;
+    const extras = Array.from(
+      document.querySelectorAll("#comidasExtras select")
+    )
+      .map((sel) => sel.value)
+      .filter((val) => val); // quitar vacíos
+
+    const todasLasComidas = [principal, ...extras].join(", "); // Un solo string
+
     const descripcion = document.getElementById("descripcion").value;
     const cantidad = parseInt(document.getElementById("cantidad").value);
-
-
     const token = localStorage.getItem("token");
 
-    const url = editingId
-      ? `${API_URL}/orders/${editingId}`
-      : `${API_URL}/orders`;
-    const method = editingId ? "PUT" : "POST";
-
     try {
-      const response = await fetch(url, {
-        method,
+      const response = await fetch(`${API_URL}/orders`, {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ nombre, descripcion ,cantidad }),
+        body: JSON.stringify({
+          nombre: todasLasComidas,
+          descripcion,
+          cantidad,
+        }),
       });
 
       if (manejarTokenExpirado(response)) return;
 
       const data = await response.json();
-      if (response.ok) {
-        editingId = null;
-
-        const submitBtn = document.getElementById("crearPedidoButton");
-        submitBtn.textContent = "Crear Pedido";
-        submitBtn.classList.remove("editando");
-        mostrarModal(data.message || "Pedido guardado exitosamente");
-        fetchOrders(); // Recargar lista de pedidos
-
-        fetchOrders();
-
-        document.getElementById("pedido").value = "";
-        document.getElementById("descripcion").value = "";
-
-        document.getElementById("pedidosList").style.display = "block";
-      } else {
-        alert(data.message || "Error en la operación");
+      if (!response.ok) {
+        alert(data.message || "Error al guardar el pedido");
+        return;
       }
+
+      // Limpiar el formulario
+      document.getElementById("pedido").value = "";
+      document.getElementById("descripcion").value = "";
+      document.getElementById("cantidad").value = "";
+      document.getElementById("comidasExtras").innerHTML = "";
+
+      mostrarModal("Pedido guardado exitosamente");
+      fetchOrders(); // Actualizar lista
     } catch (err) {
-      console.error("Error al guardar pedido:", err);
+      console.error("Error guardando el pedido:", err);
     }
   });
 
@@ -174,14 +221,16 @@ async function fetchOrders() {
 
       // Encabezado
       const headerRow = document.createElement("tr");
-      ["Pedido", "Nombre", "Descripción", "Cantidad", "Acciones"].forEach((titulo) => {
-        const th = document.createElement("th");
-        th.textContent = titulo;
-        th.style.border = "1px solid #ccc";
-        th.style.padding = "10px";
-        th.style.backgroundColor = "#f0f0f0";
-        headerRow.appendChild(th);
-      });
+      ["Pedido", "Nombre", "Descripción", "Cantidad", "Acciones"].forEach(
+        (titulo) => {
+          const th = document.createElement("th");
+          th.textContent = titulo;
+          th.style.border = "1px solid #ccc";
+          th.style.padding = "10px";
+          th.style.backgroundColor = "#f0f0f0";
+          headerRow.appendChild(th);
+        }
+      );
       table.appendChild(headerRow);
 
       // Filas de pedidos
@@ -199,7 +248,6 @@ async function fetchOrders() {
         tdNombre.style.border = "1px solid #ccc";
         tdNombre.style.padding = "10px";
 
-        
         const tdDescripcion = document.createElement("td");
         tdDescripcion.textContent = pedido.descripcion;
         tdDescripcion.style.border = "1px solid #ccc";
@@ -216,7 +264,6 @@ async function fetchOrders() {
         tdAcciones.style.padding = "10px";
         tdAcciones.style.textAlign = "center";
 
-      
         const btnEditar = document.createElement("button");
         btnEditar.textContent = "Editar";
         btnEditar.style.backgroundColor = "orange";
@@ -238,7 +285,7 @@ async function fetchOrders() {
         row.appendChild(tdIndex);
         row.appendChild(tdNombre);
         row.appendChild(tdDescripcion);
-        row.appendChild(tdCantidad); 
+        row.appendChild(tdCantidad);
         row.appendChild(tdAcciones);
 
         table.appendChild(row);
@@ -417,6 +464,29 @@ function mostrarModal(mensaje = "Operación exitosa") {
     }
   });
 }
+
+// Agregar comida extra
+document.getElementById("agregarComidaBtn").addEventListener("click", () => {
+  const selectOriginal = document.getElementById("pedido");
+  const selectClonado = selectOriginal.cloneNode(true);
+  selectClonado.value = "";
+  selectClonado.required = false;
+  const container = document.createElement("div");
+  container.className = "extra-comida";
+  container.style.marginTop = "5px";
+  container.appendChild(selectClonado);
+
+  document.getElementById("comidasExtras").appendChild(container);
+});
+document.getElementById("quitarComidaBtn").addEventListener("click", () => {
+  const extras = document.getElementById("comidasExtras");
+const extraComidas = extras.querySelectorAll(".extra-comida");
+if (extraComidas.length > 0) {
+  extras.removeChild(extraComidas[extraComidas.length - 1]);
+} else {
+  mostrarModal("No hay más comidas extras para quitar.");
+}
+});
 
 // Si hay token guardado, mostrar directamente la sección de pedidos
 window.addEventListener("DOMContentLoaded", () => {
