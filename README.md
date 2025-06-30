@@ -92,7 +92,7 @@ git clone https://github.com/taty3385/integrador-ApiRestful
 ```bash
 cd backend
 npm install
-ts-node app.ts
+npm start
 ```
 
 ### 3. Frontend
@@ -118,6 +118,17 @@ Se realizaron pruebas de las rutas del backend utilizando Postman para verificar
 - Creación, edición y eliminación de pedidos
 
 Estas pruebas aseguran que los endpoints funcionan correctamente y que las respuestas del servidor son consistentes con los datos enviados.
+
+Documentacion de la API :  [Ver en Posman](https://documenter.getpostman.com/view/39239967/2sB34ZqPvw
+)
+
+## 🌍 Deploy en Render
+
+El backend se encuentra desplegado en Render para pruebas en desarrollo:
+
+🔗 https://integrador-apirestful.onrender.com/
+
+
 
 ## 🧠 Autor
 

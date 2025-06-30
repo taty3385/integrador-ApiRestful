@@ -7,8 +7,8 @@
   },
   {
     "id": 1751305388039,
-    "nombre": "Pizza, Hamburguesa",
-    "descripcion": "lechuga ,cebolla , tomate wueso",
+    "nombre": "ensaladas",
+    "descripcion": "lechuga ,cebolla , tomate ,morrones",
     "cantidad": 2
   },
   {
@@ -22,5 +22,11 @@
     "nombre": "Hamburguesa, Tacos",
     "descripcion": "rrrrrrrrrrrrrrrrrrr",
     "cantidad": 1
+  },
+  {
+    "id": 1751311521073,
+    "nombre": "Papas fritas",
+    "descripcion": "con polloS",
+    "cantidad": 2
   }
 ]
