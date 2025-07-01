@@ -202,7 +202,7 @@ button:hover {
 
 
 .buscar-pedido> input {
-  background-color: #e0dede;
+  background-color: white;
   color: #333;
   padding: 10px 15px;
   width: 90%;
@@ -253,4 +253,10 @@ button:hover {
 .agregar-comida-btn:hover,
 .quitar-comida-btn:hover {
   background-color: #218838;
+}
+
+.descripcion {
+  color: #f0f0f0;
+  text-shadow: 2px 2px 3px #000;
+  margin-bottom: 20px;
 }

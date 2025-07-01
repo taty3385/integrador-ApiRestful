@@ -164,7 +164,7 @@ async function fetchOrders() {
       pedidosList.innerHTML = "";
 
       if (!data.orders || data.orders.length === 0) {
-        pedidosList.innerHTML = "<p>No hay pedidos registrados.</p>";
+        pedidosList.innerHTML = "<p style='color: black; text-align: center;'>No hay pedidos registrados.</p>";
         return;
       }
 
