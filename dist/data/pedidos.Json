@@ -1,32 +1,14 @@
 [
   {
-    "id": 1751301809811,
-    "nombre": "Pizza",
-    "descripcion": "lechuga ,cebolla , tomate wueso",
-    "cantidad": 1
-  },
-  {
-    "id": 1751305388039,
-    "nombre": "ensaladas",
-    "descripcion": "lechuga ,cebolla , tomate ,morrones",
-    "cantidad": 2
-  },
-  {
     "id": 1751305574607,
     "nombre": "Empanadas, Empanadas",
+    "descripcion": "lechuga ,cebolla ",
+    "cantidad": 1
+  },
+  {
+    "id": 1751405238618,
+    "nombre": "Empanadas",
     "descripcion": "lechuga ,cebolla , tomate wueso",
     "cantidad": 1
-  },
-  {
-    "id": 1751305825179,
-    "nombre": "Hamburguesa, Tacos",
-    "descripcion": "rrrrrrrrrrrrrrrrrrr",
-    "cantidad": 1
-  },
-  {
-    "id": 1751311521073,
-    "nombre": "Papas fritas",
-    "descripcion": "con polloS",
-    "cantidad": 2
   }
 ]

@@ -37,7 +37,7 @@ readOrder: () => {
 // editar
   editOrder: (
     id: number,
-    updateOrder: { nombre: string; descripcion: string }
+    updateOrder: { nombre: string; descripcion: string, cantidad: number }
   ) => {
     const orders = modelOrder.readOrder();
     const searchOeders = orders.find((pedido: any) => pedido.id === id);
@@ -46,6 +46,7 @@ readOrder: () => {
     }
     searchOeders.nombre = updateOrder.nombre;
     searchOeders.descripcion = updateOrder.descripcion;
+    searchOeders.cantidad = updateOrder.cantidad;
     modelOrder.writeOrder(orders);
     return true;
   },

@@ -43,6 +43,7 @@ const modelOrder = {
         }
         searchOeders.nombre = updateOrder.nombre;
         searchOeders.descripcion = updateOrder.descripcion;
+        searchOeders.cantidad = updateOrder.cantidad;
         modelOrder.writeOrder(orders);
         return true;
     },

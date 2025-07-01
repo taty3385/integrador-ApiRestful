@@ -49,8 +49,8 @@ const pedidosController = {
   // editar
   edditOrder: (req: Request, res: Response) => {
     const { id } = req.params;
-    const { nombre, descripcion } = req.body;
-    const updated = modelOrder.editOrder(Number(id), { nombre, descripcion });
+    const { nombre, descripcion, cantidad } = req.body;
+    const updated = modelOrder.editOrder(Number(id), { nombre , descripcion , cantidad });
     if (!updated) {
       res.status(404).json({ message: "Pedido no encontrado" });
       return;
