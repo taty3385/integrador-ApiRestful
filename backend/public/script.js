@@ -429,18 +429,7 @@ document
       mostrarModal(data.message || "Pedido eliminado");
 
       document.getElementById("modalEliminar").style.display = "none";
-      fetchOrders();
-      const filas = document.querySelectorAll("#pedidosList table tr");
-      if (filas.length <= 1) {
-        // Solo queda la fila de encabezado
-        editingId = null;
-        document.getElementById("crearPedidoButton").textContent =
-          "Crear Pedido";
-        document.getElementById("pedido").value = "";
-        document.getElementById("descripcion").value = "";
-        document.getElementById("cantidad").value = "";
-        document.getElementById("comidasExtras").innerHTML = "";
-      }
+      fetchOrders();  
     } catch (err) {
       console.error("Error eliminando pedido:", err);
     }
