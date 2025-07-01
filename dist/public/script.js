@@ -164,7 +164,7 @@ async function fetchOrders() {
       pedidosList.innerHTML = "";
 
       if (!data.orders || data.orders.length === 0) {
-        pedidosList.innerHTML = "<p>No hay pedidos registrados.</p>";
+        pedidosList.innerHTML = "<p style='color: black; text-align: center;'>No hay pedidos registrados.</p>";
         return;
       }
 
@@ -429,18 +429,7 @@ document
       mostrarModal(data.message || "Pedido eliminado");
 
       document.getElementById("modalEliminar").style.display = "none";
-      fetchOrders();
-      const filas = document.querySelectorAll("#pedidosList table tr");
-      if (filas.length <= 1) {
-        // Solo queda la fila de encabezado
-        editingId = null;
-        document.getElementById("crearPedidoButton").textContent =
-          "Crear Pedido";
-        document.getElementById("pedido").value = "";
-        document.getElementById("descripcion").value = "";
-        document.getElementById("cantidad").value = "";
-        document.getElementById("comidasExtras").innerHTML = "";
-      }
+      fetchOrders();  
     } catch (err) {
       console.error("Error eliminando pedido:", err);
     }
