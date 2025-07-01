@@ -342,7 +342,7 @@ function renderPedidos(pedidos) {
 // Editar pedido
 
 function editarPedido(pedido) {
-  editingId = pedido.id; 
+  editingId = pedido.id;
 
   const comidas = pedido.nombre.split(",").map((comida) => comida.trim());
   const selectPrincipal = document.getElementById("pedido");
@@ -360,9 +360,7 @@ function editarPedido(pedido) {
 
   // Descripción y cantidad
   document.getElementById("descripcion").value = pedido.descripcion;
-  document.getElementById("cantidad").value = pedido.cantidad || ""; 
-
-
+  document.getElementById("cantidad").value = pedido.cantidad || "";
 
   // Comidas extras
   const extrasContainer = document.getElementById("comidasExtras");
@@ -410,7 +408,7 @@ document.getElementById("cancelarEliminar").addEventListener("click", () => {
   pedidoAEliminar = null;
   document.getElementById("modalEliminar").style.display = "none";
 });
-
+// Confirmar eliminación
 document
   .getElementById("confirmarEliminar")
   .addEventListener("click", async () => {
@@ -432,6 +430,17 @@ document
 
       document.getElementById("modalEliminar").style.display = "none";
       fetchOrders();
+      const filas = document.querySelectorAll("#pedidosList table tr");
+      if (filas.length <= 1) {
+        // Solo queda la fila de encabezado
+        editingId = null;
+        document.getElementById("crearPedidoButton").textContent =
+          "Crear Pedido";
+        document.getElementById("pedido").value = "";
+        document.getElementById("descripcion").value = "";
+        document.getElementById("cantidad").value = "";
+        document.getElementById("comidasExtras").innerHTML = "";
+      }
     } catch (err) {
       console.error("Error eliminando pedido:", err);
     }
